@@ -1,3 +1,5 @@
+############### To make exectubale show as command : ./server use an othe image like the commented last part.
+
 
 # Set base image.
 FROM golang:alpine
@@ -8,7 +10,7 @@ LABEL version="1.0"
 LABEL description="ASCII Art Web Dockerize"
 
 # Set workDir.
-WORKDIR /app
+WORKDIR /Ascii-Art-Dockerize
 
 # Copy Application code.
 COPY . .
@@ -17,12 +19,18 @@ COPY . .
 EXPOSE 3000
 
 # Run App.
-CMD ["go", "run", "main.go"]
+CMD ["sh", "-c", "go build && ./server"]
+
+########### Run App.
+########### CMD ["go", "build", "-o", "server", "server.go"]
+
+########### # Run App.
+########### CMD ["./server"]
 
 # Commands :
     # Restart Docker : sudo systemctl restart docker
-    # Build Image : sudo docker build -t my-go-app .
-    # Run Container : sudo docker run -p 3000:3000 --rm my-go-app
+    # Build Image : sudo docker build -t ascii-art-web-docker .
+    # Run Container : sudo docker run -p 3000:3000 --rm CC
     # See all images : sudo docker images
     # See all images : sudo docker images
     # Delete images, containes and volumes : sudo docker system prune   (system can be replaced by (image, container, or volume))
